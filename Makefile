@@ -6,16 +6,14 @@
 #    By: rhiguita <rhiguita@student.42madrid>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/05/11 16:04:20 by rhiguita         ###   ########.fr        #
+#    Updated: 2025/05/20 20:05:29 by rhiguita         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Standard
-NAME				= pipex
+NAME				= phiplosophers
 
-# Directories
-LIBFT				= ./libft/libft.a
-INC					= -Iinc/
+
 SRC_DIR				= srcs/
 OBJ_DIR				= obj/
 
@@ -25,9 +23,7 @@ CFLAGS				= -Wall -Werror -Wextra -g $(INC)
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	srcs/pipex.c \
-									srcs/pipex_handle_error.c \
-									srcs/pipex_utils.c \
+COMMANDS_DIR		=	srcs/philo.c \
 
 # Concatenate all source files
 SRCS 				= $(COMMANDS_DIR) 
@@ -39,13 +35,10 @@ OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 start:				
 					@make all
 
-$(LIBFT):
-					@make -C ./libft
-
 all: 				$(NAME)
 
-$(NAME): 			$(OBJ) $(LIBFT)
-					@$(CC) $(CFLAGS) $(INC) $(OBJ) $(LIBFT) -o $(NAME)
+$(NAME): 			$(OBJ)
+					@$(CC) $(CFLAGS) $(INC) $(OBJ)  -o $(NAME)
 
 # Compile object files from source files
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
@@ -58,7 +51,7 @@ clean:
 
 fclean: 			clean
 					@$(RM) $(NAME)
-					@$(RM) $(LIBFT)
+					@$(RM)
 
 re: 				fclean all
 
