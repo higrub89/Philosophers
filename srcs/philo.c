@@ -1,6 +1,16 @@
-argumentos que debe aceptar:
- - Numero de philosofos.
- - time_to_die.
- - time_to_eat.
- - time_to_sleep.
- - Number_of_times_each_philosopher_must_eat( srgumento opcional)
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   philo.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/06/09 15:58:15 by rhiguita          #+#    #+#             */
+/*   Updated: 2025/06/09 15:58:37 by rhiguita         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+int main()
+{
+    
+}
