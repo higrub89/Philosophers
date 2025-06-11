@@ -56,7 +56,7 @@ fclean: 			clean
 					@echo "Delete all files" | lolcat
 
 re: 				fclean all
-					@echo "Delete all files and compiling now" | lolcat
+					@echo "Finsh Recompiling" | lolcat
 
 # Phony targets represent actions not files
 .PHONY: 			start all clean fclean re
