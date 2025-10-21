@@ -19,7 +19,18 @@
 # include <stdio.h>
 # include <sys/time.h>
 
-void* incrementar(void* data __attribute__((unused)));
-int main();
+typedef struct s_philo
+{
+    
+    pthread_t   thread;         //hilo del filosofo.
+    int         id;             //ID del filoso (1 a N).
+    int         meals_eating;   //contador de comidas.
+    long        last_meal_time; //tiempo de la ultima comida.
+    pthread_mutex_t *left_fork; //tenedor izquierdo.
+    pthread_mutex_t *right_fork;//tenedor derecho.
+//  strct s_sim     *sim;       // Puntero a la simulación general. 
+} t_philo;
+
+
 
 #endif
