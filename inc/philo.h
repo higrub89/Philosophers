@@ -31,6 +31,11 @@ typedef struct s_philo
 //  strct s_sim     *sim;       // Puntero a la simulación general. 
 } t_philo;
 
+// Estructura s_sim
+typedef struct s_sim
+{
+	int pid;
 
+}	t_sim;
 
 #endif
