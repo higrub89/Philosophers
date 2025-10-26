@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhiguita <rhiguita@student.42madrid>       +#+  +:+       +#+         #
+#    By: ruben <ruben@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/06/09 19:46:59 by rhiguita         ###   ########.fr        #
+#    Updated: 2025/10/26 07:30:58 by ruben            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,9 @@ CFLAGS				= -Wall -Werror -Wextra -g -pthread -I$(INC)
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	srcs/philo.c 
+COMMANDS_DIR		=	srcs/time.c
+						scrs/utils.c
+						srcs/main.c
 
 # Concatenate all source files
 SRCS 				= $(COMMANDS_DIR) 

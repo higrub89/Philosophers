@@ -1,0 +1,22 @@
+philo/
+├── Makefile
+├── includes/
+│   └── philo.h
+└── src/
+    ├── main.c       (Inicio y fin)
+    ├── init.c       (Inicialización de datos)
+    ├── routine.c    (La vida del filósofo)
+    ├── monitor.c    (El vigilante de la muerte)
+    ├── actions.c    (Comer, dormir, pensar)
+    ├── time.c       (Gestión del tiempo)
+    └── utils.c      (Funciones extra, como atoi).
+
+
+DEADLOCK : 
+ - Los filosofos con ID impar (1, 3, 5... ) Cogerán primero el tenedor izquierdo.
+ - Los filosofos con ID par (2, 4, 6... ) Cogerán primero el tenedor derecho.
+
+DATA-RACE : (Condiiones de carrera).
+ -LOGS: Para evitar que los printf se mezclen, usaré un mutex dedicado (write_mutex) que solo permite a un filosofo imprimir a la vez.
+ -MUERTE: Para evitar que un filosofo compruebe su (last_meal_time) al mismo tiempo que el vigilante, Crearé un hilo_monitor (VIGILANTE).
+          Este será el unico hilo que compruebe si alguien muere o si todos han comido, protegiendo el acceso a esas variables.

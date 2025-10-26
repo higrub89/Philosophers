@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/06/09 19:17:24 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/10/26 00:38:19 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <stdio.h>
 # include <sys/time.h>
 
-typedef struct s_philo
+typedef struct s_philo // Datos de cada filisofo.
 {
     
     pthread_t   thread;         //hilo del filosofo.
