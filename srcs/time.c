@@ -1,24 +1,24 @@
-#include "../philo.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   time.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/26 08:25:53 by rhiguita          #+#    #+#             */
+/*   Updated: 2025/10/26 08:25:56 by rhiguita         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-long	ft_atol(const char *str)
+#include "philo.h"
+
+long    get_current_time(void)
 {
-	long	num;
-	int		sign;
-
-	num = 0;
-	sign = 1;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	if (*str == '-' || *str == '+')
+    struct timeval tv;
+    if (gettimeofday(&tv, NULL) != 0)
     {
-        if (*str == '-')
-            sign = -1;
-        str++;
+        printf("Error: gettimeofday falló\n");
+        return (0);
     }
-	while (*str >= '0' && *str <= '9')
-	{
-        num = num * 10 + (*str - '0');
-        str++;
-    }
-	return (num * sign);
+    return (())
 }
