@@ -20,3 +20,20 @@ DATA-RACE : (Condiiones de carrera).
  -LOGS: Para evitar que los printf se mezclen, usaré un mutex dedicado (write_mutex) que solo permite a un filosofo imprimir a la vez.
  -MUERTE: Para evitar que un filosofo compruebe su (last_meal_time) al mismo tiempo que el vigilante, Crearé un hilo_monitor (VIGILANTE).
           Este será el unico hilo que compruebe si alguien muere o si todos han comido, protegiendo el acceso a esas variables.
+
+
+--- time.c ----
+Funcion gettimeofday();
+    - Esta función se encargará de hacer un llamado a la estructura "timeval tv;"
+
+ Estructa timeval tv: es una estructura del Sistema operativo POSIX/LINUX, tiene dos valores long.
+    long tv_sec = Numeros de segundos.
+    long tv_usec = Numeros de Microsegundos. 
+
+ --- long get_current_time(void) ----
+  --> Calcularemos la muerte.
+ --- long get_time_since(long start_time);
+  ---> calcularemos la marca de tiempo "timestam" que pide el subject --> ejemplo : timestamp_in_ms X has taken a fork. 
+	timestam_in_ms: es el tiempo desde que empezó la simulación.  
+
+	

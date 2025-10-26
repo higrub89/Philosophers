@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 00:38:19 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/26 09:26:15 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,39 @@ typedef struct s_philo // Datos de cada filisofo.
 // Estructura s_sim
 typedef struct s_sim
 {
-	int pid;
+	int     num_philos;                 
+    int     num_meals_to_eat;           //Argumento opcional.
+    int     simulation_should_end;      //Flag de muerte/Fin.
+    long    time_to_die;
+    long    time_to_eat;
+    long    time_to_sleep;
+    long    start_time;
 
+    t_philo *philos;
+    pthread_mutex_t *forks;
+    pthread_mutex_t write_mutex; //Mutex para proteger printf
+    pthread_mutex_t sim_mutex;
+    
 }	t_sim;
 
 #endif
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:26:19 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 08:26:22 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/10/26 13:24:52 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,3 +34,53 @@ long	ft_atol(const char *str)
     }
 	return (num * sign);
 }
+
+size_t  ft_strlen(char *s)
+{
+    size_t  i;
+    
+    i = 0;
+    while (s[i] != '\0')
+        i++;
+    return (i);
+}
+
+void    display_error(const char *message)
+{
+    write(2, "Error: ", 7);
+    write(2, message, ft_strlen(message));
+    write(2, "\n", 1);
+}
+
+void    print_status(t_philo *philo, const char *status)
+{
+    long    timestam;
+    
+    pthread_mutex_lock(&philo->sim->write_mutex);
+    timestam = get_time_since(philo->sim->start_time);
+    if (!philo->sim->simulation_should_end)
+    {
+        printf("%ld %d %s\n", timestamp, philo->id, status);
+    }
+    pthread_mutex_unlock(&philo->sim->sim_mutex);
+    pthread_mutex_unlock(&philo->sim->write_mutex); 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
