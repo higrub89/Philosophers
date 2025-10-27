@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 15:05:58 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/27 16:47:08 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_philo // Datos de cada filisofo.
     long        last_meal_time; //tiempo de la ultima comida.
     pthread_mutex_t *left_fork; //tenedor izquierdo.
     pthread_mutex_t *right_fork;//tenedor derecho.
-//  strct s_sim     *sim;       // Puntero a la simulación general. 
+    struct s_sim     *sim;       // Puntero a la simulación general. 
 } t_philo;
 
 // Estructura s_sim
