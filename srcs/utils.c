@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rhiguita <rhiguita@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:26:19 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 13:24:52 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/10/26 14:59:29 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.h"
+#include "../inc/philo.h"
 
 long	ft_atol(const char *str)
 {
@@ -45,7 +45,7 @@ size_t  ft_strlen(char *s)
     return (i);
 }
 
-void    display_error(const char *message)
+void    display_error(char *message)
 {
     write(2, "Error: ", 7);
     write(2, message, ft_strlen(message));

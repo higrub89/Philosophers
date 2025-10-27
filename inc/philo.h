@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 09:26:15 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/10/26 15:05:58 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <pthread.h>
 # include <stdlib.h>
+# include <unistd.h>
 # include <string.h>
 # include <stdio.h>
 # include <sys/time.h>
@@ -48,6 +49,25 @@ typedef struct s_sim
     pthread_mutex_t sim_mutex;
     
 }	t_sim;
+
+
+// test.c
+
+long    get_current_time(void);
+void    precise_usleep(long time_in_ms, t_sim *sim); 
+long    get_time_since(long start_time);
+
+// utils.c
+
+void    print_status(t_philo *philo, const char *status);
+void    display_error(char *message);
+long	ft_atol(const char *str);
+size_t  ft_strlen(char *s);
+
+// test_main.c
+
+int	main(void);
+
 
 #endif
 
