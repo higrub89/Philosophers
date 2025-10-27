@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:25:53 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/26 14:50:48 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/27 17:25:40 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    precise_usleep(long time_in_ms, t_sim *sim)
         if (sim->simulation_should_end)
         {
             pthread_mutex_unlock(&sim->sim_mutex);
-            break; // salir del bucle del sueño.
+            break; 
         }
         pthread_mutex_unlock(&sim->sim_mutex);
         usleep(500);

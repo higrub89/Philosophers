@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 16:47:08 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/27 18:20:42 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,10 +64,9 @@ void    display_error(char *message);
 long	ft_atol(const char *str);
 size_t  ft_strlen(char *s);
 
-// test_main.c
+// init.c
 
-int	main(void);
-
+int parse_args(t_sim *sim, int ac, char **av);
 
 #endif
 

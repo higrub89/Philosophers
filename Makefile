@@ -6,7 +6,7 @@
 #    By: ruben <ruben@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/10/26 14:55:59 by ruben            ###   ########.fr        #
+#    Updated: 2025/10/27 18:21:30 by ruben            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ RM					= rm -f
 # Source Files
 COMMANDS_DIR		=	srcs/test_main.c \
 						srcs/time.c   \
-						srcs/utils.c  
+						srcs/utils.c  \
+						srcs/init.c
 						
 
 # Concatenate all source files
