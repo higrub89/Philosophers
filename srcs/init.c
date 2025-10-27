@@ -6,11 +6,11 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 17:32:50 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 18:18:54 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/27 18:30:50 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo.c"
+#include "../inc/philo.h"
 
 static int  check_args(t_sim *sim)
 {
@@ -29,7 +29,7 @@ static int  check_args(t_sim *sim)
 
 static int   is_valid_number(const char *s)
 {
-    while (*s == ' ' || (*s >= '9' && *s <= '13'))
+    while (*s == ' ' || (*s >= 9 && *s <= 13))
         s++;
     if (*s == '+' || *s == '-')
         s++;
