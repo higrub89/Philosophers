@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 17:32:50 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 18:50:35 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/27 18:55:12 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,9 @@ static int   is_valid_number(const char *s)
         s++;
     if (*s == '+' || *s == '-')
         s++;
-    if (*s == '\0')
-        return (0);
     while (*s)
     {
-        if (*s >= '0' || *s <= '9')
+        if (*s >= '0' && *s <= '9')
             digit = 1;
         else
             return (0);
