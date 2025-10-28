@@ -1,73 +1,63 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/10/27 17:32:50 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 18:55:12 by ruben            ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../inc/philo.h"
 
-static int  check_args(t_sim *sim)
-{
-    if (sim->num_philos <= 0)
-        return (display_error("Número de filosofos debe ser > 0"), 0);
-    if (sim->time_to_die <= 0)
-        return (display_error("time_to_die debe ser > 0"), 0);
-    if (sim->time_to_eat <= 0)
-        return (display_error("time_to_eat debe ser > 0"), 0);
-    if (sim->time_to_sleep <= 0)
-        return (display_error("time_to_sleep debe ser > 0"), 0);
-    if (sim->num_meals_to_eat < -1 || sim->num_meals_to_eat == 0)
-        return (display_error("num_meals_to_eat no puede ser > 0 ó -1(infinito)"), 0);
-    return (1);
-}
-
-static int   is_valid_number(const char *s)
-{
-    int digit;
-
-    digit = 0;
-    while (*s == ' ' || (*s >= 9 && *s <= 13))
-        s++;
-    if (*s == '+' || *s == '-')
-        s++;
-    while (*s)
-    {
-        if (*s >= '0' && *s <= '9')
-            digit = 1;
-        else
-            return (0);
-        s++;
-    }
-    return (digit);
-}
-
-int parse_args(t_sim *sim, int ac, char **av)
+static int  init_mutex(t_sim *sim)
 {
     int i;
 
-    if (ac < 5 || ac > 6)
-        return (display_error("Numero incorrecto de argumentos"), 0);
-    i = 1;
-    while (i < ac)
+    i = 0;
+    while (i < sim->num_philos)
     {
-        if (!is_valid_number(av[i]))
-            return (display_error("Argumento contiene caracteres no validos"), 0);
+        if (pthread_mutex_init(&sim->forks[i], NULL) != 0)
+            return (display_error("Fallo al inicializar mutex fork"), 0);
         i++;
     }
-    sim->num_philos = (int)ft_atol(av[1]);
-    sim->time_to_die = ft_atol(av[2]);
-    sim->time_to_eat = ft_atol(av[3]);
-    sim->time_to_sleep = ft_atol(av[4]);
-    if (ac == 6)
-        sim->num_meals_to_eat = (int)ft_atol(av[5]);
-    else
-        sim->num_meals_to_eat = -1;
-    return (check_args(sim));
-    
+    if (pthread_mutex_init(&sim->write_mutex, NULL) != 0)
+        return (display_error("Fallo al inicializar mutex write"), 0);
+    if (pthread_mutex_init(&sim->sim_mutex, NULL) != 0)
+        return (display_error("Fallo al inicializar mutex simulation"), 0);
+    return (1);
+}
+
+static void init_philos(t_sim *sim)
+{
+    int i;
+
+    i = 0;
+    while(i < sim->num_philos)
+    {
+        sim->philos[i].id = i + 1;
+        sim->philos[i].sim = sim;
+        sim->philos[i].meals_eating = 0;
+
+        sim->philos[i].last_meal_fork = &sim->start_time;
+
+        sim->philos[i].left_fork = &sim->forks[i];ri
+
+        if (i == sim->num_philos - 1)
+            sim->philos[i].right_fork = &sim->forks[0];
+        else
+            sim->philos[i].right_fork = &sim->forks[i + 1];
+        i++;
+    }
+}
+
+int init_simulation(t_sim *sim)
+{
+    sim->philos = malloc(sizeof(t_philo) * sim->num_philos);
+    if (!sim->philos)
+        return (display_error("Malloc falló para filosofos"), 0);
+    memset(sim->philos, 0, sizeof(t_philo) * sim->num_philos);
+
+    sim->forks = malloc(sizeof(pthread_mutex_t) * sim->num_philos);
+    if (!sim->forks)
+     return (free(sim->philos), display_error("Malloc falló para tenedores"), 0);
+    if (!init_mutex(sim))
+    {
+        free(sim->philos);
+        free(sim->forks);
+        return (0);
+    }
+    sim->start_time = get_current_time();
+    init_philos(sim);
+    return (1);
 }

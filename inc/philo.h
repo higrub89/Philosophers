@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 18:23:46 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/28 19:04:15 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_sim
     long    time_to_sleep;
     long    start_time;
 
-    t_philo *philos;
+    t_philo         *philos;
     pthread_mutex_t *forks;
     pthread_mutex_t write_mutex; //Mutex para proteger printf
     pthread_mutex_t sim_mutex;
