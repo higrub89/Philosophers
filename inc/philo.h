@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/28 19:04:15 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/30 21:56:14 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct s_sim
 }	t_sim;
 
 
-// test.c
+// time.c
 
 long    get_current_time(void);
 void    precise_usleep(long time_in_ms, t_sim *sim); 
@@ -64,8 +64,16 @@ void    display_error(char *message);
 long	ft_atol(const char *str);
 size_t  ft_strlen(char *s);
 
-// init.c
+// Parser.c 
 
 int parse_args(t_sim *sim, int ac, char **av);
+
+// init.c
+
+int init_simulation(t_sim *sim);
+
+// main.c
+
+int main(it ac, char **av);
 
 #endif

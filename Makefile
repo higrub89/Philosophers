@@ -6,7 +6,7 @@
 #    By: ruben <ruben@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/10/28 19:22:37 by ruben            ###   ########.fr        #
+#    Updated: 2025/10/30 21:59:46 by ruben            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,12 @@ CFLAGS				= -Wall -Werror -Wextra -g -pthread -I$(INC)
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	srcs/main.c \
+COMMANDS_DIR		=	
 						srcs/time.c   \
 						srcs/utils.c  \
 						srcs/init.c	  \
 						srcs/parser.c	
+						srcs/main.c \
 						
 
 # Concatenate all source files
