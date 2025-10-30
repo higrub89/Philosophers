@@ -57,18 +57,12 @@ int	main(int argc, char **argv)
 	
 	// 3. (PRÓXIMO PASO) Lanzar la simulación (crear hilos)
 	//
-	// if (!start_simulation(&sim))
-	// {
-	//     cleanup(&sim);
-	//     return (1);
-	// }
-	
-	printf("¡Parseo e inicialización correctos!\n");
-	printf("Filósofos: %d\n", sim.num_philos);
-	printf("Tenedor derecho del último filósofo (ID %d) apunta al tenedor 0: %p\n",
-            sim.num_philos, sim.philos[sim.num_philos - 1].right_fork);
-	printf("Dirección del tenedor 0: %p\n", &sim.forks[0]);
-
+	if (!start_simulation(&sim))
+	{
+	     cleanup(&sim);
+	     return (1);
+	}
+	printf("-----Simulación Terminada-----\n");
 	// 4. Limpiar todos los recursos
 	cleanup(&sim);
 	
