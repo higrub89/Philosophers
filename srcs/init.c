@@ -29,9 +29,9 @@ static void init_philos(t_sim *sim)
         sim->philos[i].sim = sim;
         sim->philos[i].meals_eating = 0;
 
-        sim->philos[i].last_meal_fork = &sim->start_time;
+        sim->philos[i].last_meal_time = sim->start_time;
 
-        sim->philos[i].left_fork = &sim->forks[i];ri
+        sim->philos[i].left_fork = &sim->forks[i];
 
         if (i == sim->num_philos - 1)
             sim->philos[i].right_fork = &sim->forks[0];

@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/30 21:56:14 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/30 23:54:48 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,6 @@ int init_simulation(t_sim *sim);
 
 // main.c
 
-int main(it ac, char **av);
+int main(int ac, char **av);
 
 #endif
