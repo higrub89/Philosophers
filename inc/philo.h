@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/31 00:21:38 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/31 01:08:24 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,9 @@ int main(int ac, char **av);
 
 void	*philo_routine(void *arg);
 int	start_simulation(t_sim *sim);
+
+// Monitor.c
+
+void   *monitor_routine(void *arg);
 
 #endif

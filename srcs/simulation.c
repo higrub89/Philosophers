@@ -72,9 +72,9 @@ int	start_simulation(t_sim *sim)
 
 	// 2. (PRÓXIMO PASO) Lanzar el hilo monitor
 	//
-	// pthread_t monitor_thread;
-	// if (pthread_create(&monitor_thread, NULL, &monitor_routine, sim) != 0)
-	//     return (display_error("Fallo al crear el hilo del monitor"), 0);
+	pthread_t monitor_thread;
+	if (pthread_create(&monitor_thread, NULL, &monitor_routine, sim) != 0)
+		return (display_error("Fallo al crear el hilo del monitor"), 0);
 	
 
 	// 3. Esperar a que todos los hilos de los filósofos terminen
