@@ -37,7 +37,7 @@ static int	check_death(t_sim *sim)
 			pthread_mutex_unlock(&sim->sim_mutex);
 
 			// Imprimimos el mensaje de muerte (con su propio mutex)
-			print_status(&sim->philos[i], "died", 0);
+			print_status(&sim->philos[i], "died", 1);
 			return (1); // 1 = Alguien murió
 		}
 		pthread_mutex_unlock(&sim->sim_mutex);

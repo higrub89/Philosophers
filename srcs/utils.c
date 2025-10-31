@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:26:19 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/31 01:36:53 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/31 01:48:32 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void    print_status(t_philo *philo, const char *status, int force_print)
     
     pthread_mutex_lock(&philo->sim->write_mutex);
     timestam = get_time_since(philo->sim->start_time);
+
+    pthread_mutex_lock(&philo->sim->sim_mutex);
     sim_ended = philo->sim->simulation_should_end;
     pthread_mutex_unlock(&philo->sim->sim_mutex);
     if (!sim_ended || force_print)
