@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/31 01:08:24 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/31 01:32:34 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ long    get_time_since(long start_time);
 
 // utils.c
 
-void    print_status(t_philo *philo, const char *status);
+void    print_status(t_philo *philo, const char *status, int force_print);
 void    display_error(char *message);
 long	ft_atol(const char *str);
 size_t  ft_strlen(char *s);

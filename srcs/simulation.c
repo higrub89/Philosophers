@@ -43,7 +43,7 @@ void	*philo_routine(void *arg)
 		// philo_think(philo);
 
 		// --- Test temporal ---
-		print_status(philo, "está pensando (test)");
+		print_status(philo, "está pensando (test)", 0);
 		usleep(500 * 1000); // Dormir 0.5 seg
 	}
 	return (NULL);

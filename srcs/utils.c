@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:26:19 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/27 16:48:08 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/31 01:36:53 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,17 +52,19 @@ void    display_error(char *message)
     write(2, "\n", 1);
 }
 
-void    print_status(t_philo *philo, const char *status)
+void    print_status(t_philo *philo, const char *status, int force_print)
 {
     long    timestam;
+    int     sim_ended;
     
     pthread_mutex_lock(&philo->sim->write_mutex);
     timestam = get_time_since(philo->sim->start_time);
-    if (!philo->sim->simulation_should_end)
+    sim_ended = philo->sim->simulation_should_end;
+    pthread_mutex_unlock(&philo->sim->sim_mutex);
+    if (!sim_ended || force_print)
     {
         printf("%ld %d %s\n", timestam, philo->id, status);
     }
-    pthread_mutex_unlock(&philo->sim->sim_mutex);
     pthread_mutex_unlock(&philo->sim->write_mutex); 
 }
 
