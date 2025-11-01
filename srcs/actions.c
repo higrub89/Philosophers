@@ -84,5 +84,5 @@ void	philo_think(t_philo *philo)
 	print_status(philo, "is thinking", 0);
 	// Nota: Un pequeño 'sleep' aquí puede ayudar a
 	// desincronizar a los filósofos, especialmente con números pares.
-	usleep(500);
+	usleep(1000);
 }
