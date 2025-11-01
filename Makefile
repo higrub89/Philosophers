@@ -6,7 +6,7 @@
 #    By: ruben <ruben@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/10/31 01:06:04 by ruben            ###   ########.fr        #
+#    Updated: 2025/10/31 14:59:42 by ruben            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ COMMANDS_DIR		=	srcs/main.c   \
 						srcs/init.c	  \
 						srcs/parser.c \
 						srcs/simulation.c \
-						srcs/monitor.c
+						srcs/monitor.c \
+						srcs/actions.c 
 						
 
 # Concatenate all source files

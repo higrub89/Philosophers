@@ -25,7 +25,21 @@ void	*philo_routine(void *arg)
 	t_philo	*philo;
 
 	philo = (t_philo *)arg;
-	// Bucle de vida: se repite hasta que la simulación termine
+	if (philo->sim->num_philos == 1)
+	{
+		// Solo hay 1 tenedor. Lo coge.
+		pthread_mutex_lock(philo->left_fork);
+		print_status(philo, "has taken a fork", 0);
+		// No puede coger el segundo, así que espera a morir.
+		// El monitor (que corre en paralelo) lo detectará.
+		// Esperamos un poco más de 'time_to_die'.
+		precise_usleep(philo->sim->time_to_die + 10, philo->sim);
+		pthread_mutex_unlock(philo->left_fork); // Soltar al "morir"
+		return (NULL); // El hilo termina.
+	}
+	if (philo->id % 2 == 0)
+		precise_usleep(philo->sim->time_to_eat / 2, philo->sim);
+
 	while (1)
 	{
 		// Comprobación de muerte (protegida)
@@ -37,14 +51,10 @@ void	*philo_routine(void *arg)
 		}
 		pthread_mutex_unlock(&philo->sim->sim_mutex);
 
-		// (PRÓXIMO PASO: Aquí irán las acciones)
-		// philo_eat(philo);
-		// philo_sleep(philo);
-		// philo_think(philo);
-
-		// --- Test temporal ---
-		print_status(philo, "está pensando (test)", 0);
-		usleep(500 * 1000); // Dormir 0.5 seg
+		
+		philo_eat(philo);
+		philo_sleep(philo);
+		philo_think(philo);
 	}
 	return (NULL);
 }

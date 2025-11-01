@@ -6,7 +6,7 @@
 /*   By: ruben <ruben@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/09 15:59:08 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/10/31 01:32:34 by ruben            ###   ########.fr       */
+/*   Updated: 2025/10/31 14:55:10 by ruben            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,5 +84,11 @@ int	start_simulation(t_sim *sim);
 // Monitor.c
 
 void   *monitor_routine(void *arg);
+
+// actions.c
+
+void    philo_eat(t_philo *philo);
+void    philo_sleep(t_philo *philo);
+void    philo_think(t_philo *philo);
 
 #endif
