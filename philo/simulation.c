@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 01:08:54 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 14:48:50 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:01:25 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,11 +62,11 @@ int	start_simulation(t_sim *sim)
 	{
 		if (pthread_create(&sim->philos[i].thread, NULL, &philo_routine,
 				&sim->philos[i]) != 0)
-			return (display_error("Fallo al crear el hilo del filósofo"), 0);
+			return (display_error("Failed to create the thread for philo"), 0);
 		i++;
 	}
 	if (pthread_create(&monitor_thread, NULL, &monitor_routine, sim) != 0)
-		return (display_error("Fallo al crear el hilo del monitor"), 0);
+		return (display_error("Failure to create monitor thread"), 0);
 	i = 0;
 	while (i < sim->num_philos)
 	{

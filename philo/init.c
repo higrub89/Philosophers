@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 00:53:27 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 02:15:16 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:05:20 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@ static int	init_mutex(t_sim *sim)
 	while (i < sim->num_philos)
 	{
 		if (pthread_mutex_init(&sim->forks[i], NULL) != 0)
-			return (display_error("Fallo al inicializar mutex fork"), 0);
+			return (display_error("Failed to initialize mutex fork"), 0);
 		i++;
 	}
 	if (pthread_mutex_init(&sim->write_mutex, NULL) != 0)
-		return (display_error("Fallo al inicializar mutex write"), 0);
+		return (display_error("Failed to initialize mutex write"), 0);
 	if (pthread_mutex_init(&sim->sim_mutex, NULL) != 0)
-		return (display_error("Fallo al inicializar mutex simulation"), 0);
+		return (display_error("Failed to initialize mutex simulation"), 0);
 	return (1);
 }
 
@@ -54,11 +54,11 @@ int	init_simulation(t_sim *sim)
 {
 	sim->philos = malloc(sizeof(t_philo) * sim->num_philos);
 	if (!sim->philos)
-		return (display_error("Malloc falló para filosofos"), 0);
+		return (display_error("Malloc failed for philosophers"), 0);
 	memset(sim->philos, 0, sizeof(t_philo) * sim->num_philos);
 	sim->forks = malloc(sizeof(pthread_mutex_t) * sim->num_philos);
 	if (!sim->forks)
-		return (free(sim->philos), display_error("Malloc falló para tenedores"),
+		return (free(sim->philos), display_error("Malloc failed for forks"),
 			0);
 	if (!init_mutex(sim))
 	{

@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/26 08:25:53 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 02:16:37 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 17:01:49 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long	get_current_time(void)
 
 	if (gettimeofday(&tv, NULL) != 0)
 	{
-		printf("Error: gettimeofday falló\n");
+		printf("Error: gettimeofday Failed\n");
 		return (0);
 	}
 	return ((tv.tv_sec * 1000) + (tv.tv_usec / 1000));
