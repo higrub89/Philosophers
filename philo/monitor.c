@@ -5,68 +5,74 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/11/02 00:56:43 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 14:51:33 by rhiguita         ###   ########.fr       */
+/*   Created: 2025/11/02 16:04:46 by rhiguita          #+#    #+#             */
+/*   Updated: 2025/11/02 16:04:57 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static int	check_meals(t_sim *sim)
+static int	has_philo_died(t_philo *philo)
 {
-	int	i;
+	long	current_time;
+	int		died;
 
-	if (sim->num_meals_to_eat == -1)
-		return (0);
-	i = 0;
-	while (i < sim->num_philos)
+	died = 0;
+	pthread_mutex_lock(&philo->sim->sim_mutex);
+	current_time = get_current_time();
+	if (current_time - philo->last_meal_time >= philo->sim->time_to_die
+		&& !philo->sim->simulation_should_end)
 	{
-		if (sim->philos[i].meals_eating < sim->num_meals_to_eat)
-			return (0);
-		i++;
+		philo->sim->simulation_should_end = 1;
+		died = 1;
 	}
-	sim->simulation_should_end = 1;
-	return (1);
-}
-
-static int	check_philos_death(t_sim *sim, long current_time)
-{
-	int	i;
-
-	i = 0;
-	while (i < sim->num_philos)
+	pthread_mutex_unlock(&philo->sim->sim_mutex);
+	if (died)
 	{
-		if (current_time - sim->philos[i].last_meal_time >= sim->time_to_die)
-		{
-			sim->simulation_should_end = 1;
-			pthread_mutex_unlock(&sim->sim_mutex);
-			print_status(&sim->philos[i], "died", 1);
-			return (1);
-		}
-		i++;
+		print_status(philo, "died", 1);
+		return (1);
 	}
 	return (0);
 }
 
+static int	have_all_eaten(t_sim *sim)
+{
+	int	i;
+	int	all_ate;
+
+	all_ate = 1;
+	if (sim->num_meals_to_eat == -1)
+		return (0);
+	pthread_mutex_lock(&sim->sim_mutex);
+	i = 0;
+	while (i < sim->num_philos)
+	{
+		if (sim->philos[i].meals_eating < sim->num_meals_to_eat)
+		{
+			all_ate = 0;
+			break ;
+		}
+		i++;
+	}
+	if (all_ate)
+		sim->simulation_should_end = 1;
+	pthread_mutex_unlock(&sim->sim_mutex);
+	return (all_ate);
+}
+
 static int	check_death_and_meals(t_sim *sim)
 {
-	long	current_time;
+	int	i;
 
-	current_time = get_current_time();
-	pthread_mutex_lock(&sim->sim_mutex);
-	if (sim->simulation_should_end)
+	i = 0;
+	while (i < sim->num_philos)
 	{
-		pthread_mutex_unlock(&sim->sim_mutex);
-		return (1);
+		if (has_philo_died(&sim->philos[i]))
+			return (1);
+		i++;
 	}
-	if (check_meals(sim))
-	{
-		pthread_mutex_unlock(&sim->sim_mutex);
+	if (have_all_eaten(sim))
 		return (1);
-	}
-	if (check_philos_death(sim, current_time))
-		return (1);
-	pthread_mutex_unlock(&sim->sim_mutex);
 	return (0);
 }
 
