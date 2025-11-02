@@ -6,7 +6,7 @@
 #    By: rhiguita <rhiguita@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/11/02 00:34:59 by rhiguita         ###   ########.fr        #
+#    Updated: 2025/11/02 01:22:24 by rhiguita         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,7 @@ $(NAME): 			$(OBJ)
 
 # Compile object files from source files
 $(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
-					@mkdir -p $(@D)
-					@echo "compiling $<" | lolcat
+					@echo "compiling $<"
 					@$(CC) $(CFLAGS) $(INC) -c $< -o $@ 2>&1
 
 clean:
