@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 17:32:50 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 02:16:09 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 02:21:13 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	is_valid_number(const char *s)
 
 int	parse_args(t_sim *sim, int ac, char **av)
 {
-	int i;
+	int	i;
 
 	if (ac < 5 || ac > 6)
 		return (display_error("Numero incorrecto de argumentos"), 0);
