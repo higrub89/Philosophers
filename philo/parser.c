@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/27 17:32:50 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 02:21:13 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:48:47 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ static int	check_args(t_sim *sim)
 	if (sim->time_to_sleep <= 0)
 		return (display_error("time_to_sleep debe ser > 0"), 0);
 	if (sim->num_meals_to_eat < -1 || sim->num_meals_to_eat == 0)
-		return (display_error("num_meals_to_eat no puede ser > 0 ó
-				-1(infinito)"), 0);
+		return (display_error("num_meals_to_eat no puede ser > 0"), 0);
 	return (1);
 }
 

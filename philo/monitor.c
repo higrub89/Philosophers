@@ -6,7 +6,7 @@
 /*   By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 00:56:43 by rhiguita          #+#    #+#             */
-/*   Updated: 2025/11/02 14:15:55 by rhiguita         ###   ########.fr       */
+/*   Updated: 2025/11/02 14:51:33 by rhiguita         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static int	check_philos_death(t_sim *sim, long current_time)
 	i = 0;
 	while (i < sim->num_philos)
 	{
-		if (current_time - sim->philos[i].las_meal_time >= sim->time_to_die)
+		if (current_time - sim->philos[i].last_meal_time >= sim->time_to_die)
 		{
 			sim->simulation_should_end = 1;
 			pthread_mutex_unlock(&sim->sim_mutex);
@@ -55,6 +55,11 @@ static int	check_death_and_meals(t_sim *sim)
 	current_time = get_current_time();
 	pthread_mutex_lock(&sim->sim_mutex);
 	if (sim->simulation_should_end)
+	{
+		pthread_mutex_unlock(&sim->sim_mutex);
+		return (1);
+	}
+	if (check_meals(sim))
 	{
 		pthread_mutex_unlock(&sim->sim_mutex);
 		return (1);

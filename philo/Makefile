@@ -3,27 +3,27 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rhiguita <rhiguita@student.42.fr>          +#+  +:+       +#+         #
+#    By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/11/02 01:22:24 by rhiguita         ###   ########.fr        #
+#    Updated: 2025/11/02 15:46:03 by rhiguita         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Standard
 NAME				= philo
 
-INC						= -Iinc/
-SRC_DIR				= srcs/
+INC_DIR				= ./
+SRC_DIR				= ./
 OBJ_DIR				= obj/
 
 # Compiler and CFlags
 CC					= gcc
-CFLAGS				= -Wall -Werror -Wextra -g -pthread -I$(INC)
+CFLAGS				= -Wall -Werror -Wextra -g -pthread -I$(INC_DIR)
 RM					= rm -f
 
 # Source Files
-COMMANDS_DIR		=	main.c   \
+SRCS_FILES		=	main.c   \
 						time.c   \
 						utils.c  \
 						init.c	  \
@@ -33,25 +33,24 @@ COMMANDS_DIR		=	main.c   \
 						actions.c 
 						
 
-# Concatenate all source files
-SRCS 				= $(COMMANDS_DIR) 
+# add prefix in all file.c
+SRCS 				= $(addprefix $(SRC_DIR), $(SRCS_FILES)) 
 
 # Apply the pattern substitution to each source file in SRC and produce a corresponding list of object files in the OBJ_DIR
 OBJ 				= $(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)%.o,$(SRCS))
 
-# Build rules
-start:				
-					@make -s all
-
+# --- TARGETS ---
 all: 				$(NAME)
 
 $(NAME): 			$(OBJ)
+					@echo "exalting philo..."
 					@$(CC) $(CFLAGS) $(INC) $(OBJ)  -o $(NAME) 2>&1 
 
 # Compile object files from source files
-$(OBJ_DIR)%.o:		$(SRC_DIR)%.c 
-					@echo "compiling $<"
-					@$(CC) $(CFLAGS) $(INC) -c $< -o $@ 2>&1
+$(OBJ_DIR)%.o:		$(SRC_DIR)%.c
+					@mkdir -p $(OBJ_DIR)
+					@echo "compiling ...$<"
+					@$(CC) $(CFLAGS) -c $< -o $@ 2>&1
 
 clean:
 					@$(RM) -r $(OBJ_DIR)
@@ -66,4 +65,4 @@ re: 				fclean all
 					@echo "Finsh Recompiling"
 
 # Phony targets represent actions not files
-.PHONY: 			start all clean fclean re
+.PHONY: 			all clean fclean re
