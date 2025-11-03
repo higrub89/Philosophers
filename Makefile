@@ -3,17 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ruben <ruben@student.42.fr>                +#+  +:+       +#+         #
+#    By: rhiguita <rhiguita@student.42madrid.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/11 16:04:17 by rhiguita          #+#    #+#              #
-#    Updated: 2025/11/01 23:08:43 by rhiguita         ###   ########.fr        #
+#    Updated: 2025/11/02 15:32:40 by rhiguita         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Standard
 NAME				= philo
 
-INC						= -Iinc/
+INC					= -Iinc/
 SRC_DIR				= srcs/
 OBJ_DIR				= obj/
 
